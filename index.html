@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Malindu - Singer, Musician. Official portfolio featuring music, videos, and collaborations.">
+    <meta name="keywords" content="Malindu, singer, musician, music, artist, portfolio">
+    <title>Malindu - Singer | Musician</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Malindu</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#songs" class="nav-link">Songs</a></li>
+                <li><a href="#youtube" class="nav-link">YouTube</a></li>
+                <li><a href="#releases" class="nav-link">Releases</a></li>
+                <li><a href="#collabs" class="nav-link">Collabs</a></li>
+                <li><a href="#videos" class="nav-link">Videos</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <video autoplay muted loop class="hero-video">
+                <source src="images/hero/hero-video.mp4" type="video/mp4">
+                <!-- Fallback background image if video doesn't load -->
+                <img src="images/hero/hero-bg.jpg" alt="Malindu performing" class="hero-fallback">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Malindu</h1>
+            <p class="hero-subtitle">Singer | Musician</p>
+            <div class="hero-buttons">
+                <a href="#songs" class="btn btn-primary">Listen Now</a>
+                <a href="#releases" class="btn btn-secondary">Latest Release</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://scontent.fcmb3-2.fna.fbcdn.net/v/t39.30808-6/472614464_1162252931935040_6899706834646979910_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFU3p8DzMIk_zuBHDVe1_y-SnS8sGWfyYRKdLywZZ_JhD_CPGBZse9-tkr65G9C0bkCeCCyqeWX2tDaxELfxN-l&_nc_ohc=lUdsbeI_9V0Q7kNvwERQ0ta&_nc_oc=Adnp6AeO0uVQzq2I7aDiAEtvrKmnldOUEwjEYPDYiMUiqeARyRn2yBDskdhtSI4o5EnUusGq8--8XZ0j2C6UiW_i&_nc_zt=23&_nc_ht=scontent.fcmb3-2.fna&_nc_gid=d-pt6ckFmUblts1y1P70hA&oh=00_AfTfmR-VGTOvSD4Mw-0UlAXdWhdOfv-nSpfp0OInvZylBw&oe=6879F332" alt="Malindu" class="artist-photo">
+                </div>
+                <div class="about-text">
+                    <p>Hi, I'm Malindu Kirindegamaarachchi.</p>
+                    <p>I'm a singer who focuses on creating quality music with some of Sri Lanka's most respected producers and lyricists. My journey started with "Saavi" (2017), produced by Iraj, and my breakthrough came with "Kathirina" (2020) which has reached over 14 million views - the most famous song that I gave my voice to.</p>
+                    <p>I prefer to let my music speak for itself. I work quietly, choose my collaborations carefully, and always prioritize quality over quantity. When I'm not making music, you'll find me coding.</p>
+                    <p>Thank you for listening.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Songs Section -->
+    <section id="songs" class="songs">
+        <div class="container">
+            <h2 class="section-title">My Songs</h2>
+            <!-- Apple Music inspired list rendered dynamically from JS -->
+            <div id="songs-list" class="songs-list"></div>
+        </div>
+    </section>
+
+    <!-- YouTube Section -->
+    <section id="youtube" class="youtube">
+        <div class="container">
+            <h2 class="section-title">YouTube Channel</h2>
+            <div class="youtube-content" style="justify-content: center;">
+                <div class="youtube-info" style="margin: 0 auto; text-align: center;">
+                    <h3>Latest from Malindu</h3>
+                    <p>Subscribe to my YouTube channel for exclusive behind-the-scenes content, live performances, and music videos.</p>
+                    <a href="#" class="btn btn-primary">Subscribe on YouTube</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Release Section -->
+    <section id="releases" class="releases">
+        <div class="container">
+            <h2 class="section-title">New Release</h2>
+            <div class="release-content">
+                <div class="release-artwork">
+                    <img src="images/songs/rathusaaya.jpg" alt="Rathusaaya - New Release">
+                    <div class="release-badge">NEW</div>
+                </div>
+                <div class="release-info">
+                    <h3>"Rathu Saaya" - Coming Soon</h3>
+                    <p>My latest single "Rathu Saaya" is coming soon to all streaming platforms. Stay tuned for an unforgettable musical experience!</p>
+                    <div class="streaming-links" style="justify-content: flex-start;">
+                        <a href="#" class="streaming-btn spotify coming-soon-btn">
+                            <i class="fab fa-spotify"></i>
+                            Spotify
+                        </a>
+                        <a href="#" class="streaming-btn apple coming-soon-btn">
+                            <i class="fab fa-apple"></i>
+                            Apple Music
+                        </a>
+                        <a href="#" class="streaming-btn youtube coming-soon-btn">
+                            <i class="fab fa-youtube"></i>
+                            YouTube Music
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaborations Section -->
+    <section id="collabs" class="collabs">
+        <div class="container">
+            <h2 class="section-title">Collaborations</h2>
+            <div class="collabs-chips-group" style="justify-content: center;">
+                <div class="chips-row" style="justify-content: center;">
+                    <span class="collab-chip">Iraj</span>
+                    <span class="collab-chip">Wasantha Dukgannarala</span>
+                    <span class="collab-chip">Pasan Liyanage</span>
+                    <span class="collab-chip">Sankha B</span>
+                    <span class="collab-chip">Romaine Willies</span>
+                    <span class="collab-chip">Hirushi Jayasena</span>
+                    <!-- Add more as needed -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Videos Section -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <h2 class="section-title">Music Videos</h2>
+            <div id="videos-list" class="videos-grid"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content" style="justify-content: center;">
+                <div class="contact-info" style="margin: 0 auto; text-align: center;">
+                    <h3>Connect with me on social media</h3>
+                    <p>Follow for updates, music, and more:</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-apple"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Malindu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

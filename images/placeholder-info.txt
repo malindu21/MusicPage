@@ -1,0 +1,63 @@
+PLACEHOLDER IMAGES GUIDE
+========================
+
+This file contains information about the placeholder images that need to be replaced with actual content.
+
+CURRENT PLACEHOLDER IMAGES (from Unsplash):
+- All images currently use Unsplash placeholder URLs
+- These need to be replaced with actual Malindu content
+
+REQUIRED IMAGES TO ADD:
+======================
+
+1. HERO SECTION (images/hero/)
+   - hero-bg.jpg - Background image for hero section
+   - hero-video.mp4 - Background video (optional)
+
+2. ARTIST PHOTOS (images/artist/)
+   - malindu-profile.jpg - Main profile photo (800x1000px)
+   - malindu-studio.jpg - Studio/performance photo (1200x800px)
+
+3. SONG ALBUM ART (images/songs/)
+   - midnight-dreams.jpg - Album artwork (600x600px)
+   - electric-love.jpg - Album artwork (600x600px)
+   - ocean-waves.jpg - Album artwork (600x600px)
+   - city-lights.jpg - Album artwork (600x600px)
+   - freedom-song.jpg - Album artwork (600x600px)
+
+4. COLLABORATION PHOTOS (images/collaborations/)
+   - sarah-johnson.jpg - Collaboration partner (400x400px)
+   - mike-chen.jpg - Collaboration partner (400x400px)
+   - emma-davis.jpg - Collaboration partner (400x400px)
+   - alex-rivera.jpg - Collaboration partner (400x400px)
+
+5. VIDEO THUMBNAILS (images/videos/)
+   - midnight-dreams-video.jpg - Video thumbnail (600x400px)
+   - electric-love-video.jpg - Video thumbnail (600x400px)
+   - ocean-waves-video.jpg - Video thumbnail (600x400px)
+   - city-lights-video.jpg - Video thumbnail (600x400px)
+
+6. RELEASE ARTWORK (images/releases/)
+   - eternal-flame.jpg - New release artwork (800x800px)
+
+INSTRUCTIONS:
+============
+1. Add your actual images to the appropriate folders
+2. Use the exact filenames listed above
+3. Ensure images meet the size requirements
+4. Optimize images for web (compress to reduce file size)
+5. Update the HTML file to reference local images instead of Unsplash URLs
+
+IMAGE OPTIMIZATION TIPS:
+=======================
+- Use JPG format for photos
+- Use PNG format for graphics with transparency
+- Compress images to 70-85% quality
+- Keep file sizes under 500KB for optimal loading
+- Consider using WebP format for modern browsers
+
+CONTACT:
+========
+For help with image optimization or requirements:
+Email: management@malindu.com
+Phone: +1 (555) 123-4567 
