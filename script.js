@@ -59,18 +59,18 @@ const SONGS = [
 
 // --- Music Videos Data ---
 const VIDEOS = [
-  {
-    title: 'Kathirina',
-    youtubeUrl: 'https://youtu.be/bHGdcG6R-xQ?si=ByzkO8lvmd-1L_DL', // Replace with actual ID
-    thumbnail: 'images/songs/kathirina.jpg',
-  },
-  {
-    title: 'Saavi',
-    youtubeUrl: 'https://youtu.be/IIG8x725JxE?si=yz0QW3wm27RhiTem', // Replace with actual ID
-    thumbnail: 'images/songs/saavi.jpg',
-  },
-  // Add more videos as needed
-];
+    {
+      title: 'Kathirina',
+      youtubeUrl: 'https://www.youtube.com/embed/bHGdcG6R-xQ',
+      thumbnail: 'images/songs/kathirina.jpg',
+    },
+    {
+      title: 'Saavi',
+      youtubeUrl: 'https://www.youtube.com/embed/IIG8x725JxE',
+      thumbnail: 'images/songs/saavi.jpg',
+    },
+    // Add more videos as needed
+  ];
 
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
@@ -756,18 +756,47 @@ window.addEventListener('DOMContentLoaded', () => {
 }); 
 
 // --- Render Music Videos ---
+function isEmbeddable(youtubeUrl) {
+  // Only works for standard YouTube video IDs, not playlists or shorts
+  // This is a placeholder: in production, you'd check via YouTube API, but here we fallback for all
+  return youtubeUrl.includes('youtube.com/embed/');
+}
+
+function getYoutubeWatchUrl(embedUrl) {
+  // Convert embed URL to watch URL
+  const match = embedUrl.match(/embed\/([\w-]+)/);
+  if (match) {
+    return `https://www.youtube.com/watch?v=${match[1]}`;
+  }
+  return embedUrl;
+}
+
 function renderVideos() {
   const videosList = document.getElementById('videos-list');
   if (!videosList) return;
-  videosList.innerHTML = VIDEOS.map(video => `
-    <div class="video-card">
-      <div class="video-embed-wrapper">
-        <iframe width="100%" height="220" src="${video.youtubeUrl}" title="${video.title}"
-          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <h3>${video.title}</h3>
-    </div>
-  `).join('');
+  videosList.innerHTML = VIDEOS.map(video => {
+    if (isEmbeddable(video.youtubeUrl)) {
+      return `
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <iframe width="100%" height="220" src="${video.youtubeUrl}" title="${video.title}"
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <h3>${video.title}</h3>
+        </div>
+      `;
+    } else {
+      return `
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <img src="${video.thumbnail || 'images/placeholder-info.txt'}" alt="${video.title}" style="width:100%;height:220px;object-fit:cover;border-radius:8px;" />
+          </div>
+          <h3>${video.title}</h3>
+          <a href="${getYoutubeWatchUrl(video.youtubeUrl)}" target="_blank" class="btn btn-primary" style="margin-top:0.5rem;">Watch on YouTube</a>
+        </div>
+      `;
+    }
+  }).join('');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
