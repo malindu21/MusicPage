@@ -672,6 +672,27 @@ function setupBottomPlayerLogic(player) {
 window.addEventListener('DOMContentLoaded', () => {
     renderSongs();
     ensureBottomPlayer();
+    
+    // Back to top button functionality
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    // Show/hide back to top button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    // Smooth scroll to top when button is clicked
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
     // Toast for all coming soon streaming buttons
     document.body.addEventListener('click', function(e) {
         const target = e.target.closest('.coming-soon-btn');
