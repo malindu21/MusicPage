@@ -153,6 +153,12 @@ body {
     filter: blur(2px);
 }
 
+@media (max-width: 768px) {
+    .hero-overlay::before {
+        background-position: left center;
+    }
+}
+
 .hero-content {
     z-index: 2;
     animation: fadeInUp 1s ease-out;
