@@ -526,31 +526,6 @@ function ensureBottomPlayer() {
 }
 
 function showSongNotAvailablePopup(songName) {
-    // Function to detect if user is on mobile
-    function isMobile() {
-        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
-    
-    // Function to open YouTube app or website
-    function openYouTube() {
-        if (isMobile()) {
-            // Try to open YouTube app with deep link
-            const youtubeAppUrl = 'youtube://www.youtube.com/@Malindu?sub_confirmation=1';
-            const youtubeWebUrl = 'https://www.youtube.com/@Malindu?sub_confirmation=1';
-            
-            // Try to open the app first
-            window.location.href = youtubeAppUrl;
-            
-            // Fallback to web after a short delay if app doesn't open
-            setTimeout(() => {
-                window.open(youtubeWebUrl, '_blank');
-            }, 2000);
-        } else {
-            // Desktop - open YouTube website
-            window.open('https://www.youtube.com/@Malindu?sub_confirmation=1', '_blank');
-        }
-    }
-    
     // Create popup overlay
     const overlay = document.createElement('div');
     overlay.className = 'song-popup-overlay';
@@ -561,7 +536,7 @@ function showSongNotAvailablePopup(songName) {
                 <h3>Song Not Available Yet</h3>
                 <p>Sorry, "${songName}" is not available yet. Distribution is still in progress.</p>
                 <p>Want to stay tuned?</p>
-                <button class="song-popup-subscribe-btn" onclick="openYouTube()">
+                <button class="song-popup-subscribe-btn" onclick="window.open('https://www.youtube.com/@Malindu?sub_confirmation=1', '_blank')">
                     <i class="fab fa-youtube"></i>
                     Subscribe on YouTube
                 </button>
