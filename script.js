@@ -533,7 +533,6 @@ function showSongNotAvailablePopup(songName) {
         <div class="song-popup">
             <div class="song-popup-content">
                 <div class="song-popup-icon">🎵</div>
-                <h3>Song Not Available Yet</h3>
                 <p>Sorry, "${songName}" is not available yet. Distribution is still in progress.</p>
                 <p>Want to stay tuned?</p>
                 <button class="song-popup-subscribe-btn" onclick="window.open('https://www.youtube.com/@Malindu?sub_confirmation=1', '_blank')">
