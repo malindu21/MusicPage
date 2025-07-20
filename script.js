@@ -672,48 +672,31 @@ function setupBottomPlayerLogic(player) {
 // Loading Screen Functionality
 function initLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
-    const progressFill = document.querySelector('.progress-fill');
-    const progressText = document.querySelector('.progress-text');
-    
-    let progress = 0;
-    const targetProgress = 100;
-    const duration = 3000; // 3 seconds total
-    const interval = 50; // Update every 50ms
-    const increment = (targetProgress / (duration / interval));
-    
-    const progressInterval = setInterval(() => {
-        progress += increment;
-        
-        if (progress >= targetProgress) {
-            progress = targetProgress;
-            clearInterval(progressInterval);
-            
-            // Hide loading screen after completion
+    // Only show for first-time visitors
+    if (!localStorage.getItem('visited')) {
+        // Simulate loading for 2.5s, then fade out
+        setTimeout(() => {
+            loadingScreen.classList.add('fade-out');
             setTimeout(() => {
-                loadingScreen.classList.add('fade-out');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 800);
-            }, 500);
-        }
-        
-        progressFill.style.width = progress + '%';
-        progressText.textContent = Math.round(progress) + '%';
-    }, interval);
+                loadingScreen.style.display = 'none';
+            }, 800);
+            localStorage.setItem('visited', '1');
+        }, 2500);
+    } else {
+        // Hide immediately for returning visitors
+        loadingScreen.style.display = 'none';
+    }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
     // Initialize loading screen
     initLoadingScreen();
-    
     // Wait for loading to complete before initializing other features
     setTimeout(() => {
         renderSongs();
         ensureBottomPlayer();
-        
         // Back to top button functionality
         const backToTopBtn = document.getElementById('back-to-top');
-        
         // Show/hide back to top button based on scroll position
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
@@ -722,7 +705,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 backToTopBtn.classList.remove('visible');
             }
         });
-        
         // Smooth scroll to top when button is clicked
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
@@ -730,7 +712,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 behavior: 'smooth'
             });
         });
-        
         // Toast for all coming soon streaming buttons
         document.body.addEventListener('click', function(e) {
             const target = e.target.closest('.coming-soon-btn');
@@ -739,7 +720,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 showToast('Rathu Saaya is coming soon!');
             }
         });
-    }, 3500); // Wait for loading screen to complete
+    }, 100); // No delay needed for returning visitors
 });
 
 // --- Custom Player Logic ---
