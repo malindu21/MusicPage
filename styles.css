@@ -151,6 +151,9 @@ body {
     background-repeat: no-repeat;
     opacity: 0.3;
     filter: blur(2px);
+    /* Performance optimization */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 @media (max-width: 768px) {
