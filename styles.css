@@ -957,6 +957,25 @@ section {
 
 .footer p {
     color: #666666;
+    margin-bottom: 0.5rem;
+}
+
+.footer-credit {
+    font-size: 0.9rem;
+    color: #888888;
+    margin-top: 0.5rem;
+}
+
+.footer-credit a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-credit a:hover {
+    color: #8b5cf6;
+    text-decoration: underline;
 }
 
 /* Animations */
@@ -2165,4 +2184,147 @@ body, html {
     text-align: center !important;
     line-height: 1.2 !important;
   }
+} 
+
+/* --- Song Not Available Popup --- */
+.song-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: popupFadeIn 0.3s ease-out;
+}
+
+.song-popup {
+    background: linear-gradient(135deg, #181828 0%, #23234b 100%);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 90vw;
+    animation: popupSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.song-popup-content {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.song-popup-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: popupIconBounce 0.6s ease-out 0.2s both;
+}
+
+.song-popup h3 {
+    color: #00d4ff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.song-popup p {
+    color: #e6e6e6;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.song-popup-subscribe-btn {
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.5rem auto 0 auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.song-popup-subscribe-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+}
+
+.song-popup-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.song-popup-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+@keyframes popupFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popupSlideIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes popupIconBounce {
+    from { 
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .song-popup {
+        margin: 1rem;
+        width: calc(100vw - 2rem);
+    }
+    
+    .song-popup-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .song-popup h3 {
+        font-size: 1.3rem;
+    }
+    
+    .song-popup p {
+        font-size: 0.95rem;
+    }
+    
+    .song-popup-subscribe-btn {
+        font-size: 0.95rem;
+        padding: 10px 20px;
+    }
 } 

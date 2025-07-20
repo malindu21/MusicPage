@@ -525,6 +525,37 @@ function ensureBottomPlayer() {
     }
 }
 
+function showSongNotAvailablePopup(songName) {
+    // Create popup overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'song-popup-overlay';
+    overlay.innerHTML = `
+        <div class="song-popup">
+            <div class="song-popup-content">
+                <div class="song-popup-icon">🎵</div>
+                <h3>Song Not Available Yet</h3>
+                <p>Sorry, "${songName}" is not available yet. Distribution is still in progress.</p>
+                <p>Want to stay tuned?</p>
+                <button class="song-popup-subscribe-btn" onclick="window.open('https://www.youtube.com/@malindu21?sub_confirmation=1', '_blank')">
+                    <i class="fab fa-youtube"></i>
+                    Subscribe on YouTube
+                </button>
+                <button class="song-popup-close-btn" onclick="this.closest('.song-popup-overlay').remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+    
+    // Auto-remove after 8 seconds
+    setTimeout(() => {
+        if (overlay.parentNode) {
+            overlay.remove();
+        }
+    }, 8000);
+}
+
 function showBottomPlayer(song, idx) {
     ensureBottomPlayer();
     const player = document.getElementById('bottom-player');
@@ -554,6 +585,19 @@ function showBottomPlayer(song, idx) {
             <audio preload="metadata" src="${song.audio}"></audio>
         </div>
     `;
+    
+    // Add error handling for audio
+    const audio = player.querySelector('audio');
+    audio.addEventListener('error', () => {
+        // Hide the bottom player
+        const wrapper = player.querySelector('.bottom-player');
+        wrapper.classList.remove('active');
+        setTimeout(() => { player.innerHTML = ''; }, 300);
+        
+        // Show popup message
+        showSongNotAvailablePopup(song.name);
+    });
+    
     setupBottomPlayerLogic(player);
 }
 
@@ -661,6 +705,13 @@ function initCustomPlayers() {
         const bar = player.querySelector('.player-progress-bar');
         const progress = player.querySelector('.player-progress');
         const time = player.querySelector('.player-time');
+
+        // Add error handling for audio
+        audio.addEventListener('error', () => {
+            // Get song name from the card
+            const songName = card.querySelector('h3').textContent;
+            showSongNotAvailablePopup(songName);
+        });
 
         function formatTime(sec) {
             sec = Math.floor(sec);
