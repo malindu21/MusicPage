@@ -672,20 +672,24 @@ function setupBottomPlayerLogic(player) {
 // Loading Screen Functionality
 function initLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
-    // Only show for first-time visitors
-    if (!localStorage.getItem('visited')) {
-        // Simulate loading for 2.5s, then fade out
-        setTimeout(() => {
-            loadingScreen.classList.add('fade-out');
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 800);
-            localStorage.setItem('visited', '1');
-        }, 2500);
-    } else {
-        // Hide immediately for returning visitors
-        loadingScreen.style.display = 'none';
+    const mainContent = document.getElementById('main-content');
+    
+    // Always show loading screen first
+    loadingScreen.style.display = 'flex';
+    if (mainContent) {
+        mainContent.style.display = 'none';
     }
+    
+    // Simulate loading for 2.5s, then fade out
+    setTimeout(() => {
+        loadingScreen.classList.add('fade-out');
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+            if (mainContent) {
+                mainContent.style.display = 'block';
+            }
+        }, 800);
+    }, 2500);
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -720,7 +724,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 showToast('Rathu Saaya is coming soon!');
             }
         });
-    }, 100); // No delay needed for returning visitors
+    }, 3300); // Wait for loading screen to complete (2.5s + 0.8s fade)
 });
 
 // --- Custom Player Logic ---
