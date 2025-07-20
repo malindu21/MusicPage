@@ -669,44 +669,78 @@ function setupBottomPlayerLogic(player) {
     raf = requestAnimationFrame(step);
 }
 
+// Loading Screen Functionality
+function initLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const progressFill = document.querySelector('.progress-fill');
+    const progressText = document.querySelector('.progress-text');
+    
+    let progress = 0;
+    const targetProgress = 100;
+    const duration = 3000; // 3 seconds total
+    const interval = 50; // Update every 50ms
+    const increment = (targetProgress / (duration / interval));
+    
+    const progressInterval = setInterval(() => {
+        progress += increment;
+        
+        if (progress >= targetProgress) {
+            progress = targetProgress;
+            clearInterval(progressInterval);
+            
+            // Hide loading screen after completion
+            setTimeout(() => {
+                loadingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 800);
+            }, 500);
+        }
+        
+        progressFill.style.width = progress + '%';
+        progressText.textContent = Math.round(progress) + '%';
+    }, interval);
+}
+
 window.addEventListener('DOMContentLoaded', () => {
-    renderSongs();
-    ensureBottomPlayer();
+    // Initialize loading screen
+    initLoadingScreen();
     
-    // Back to top button functionality
-    const backToTopBtn = document.getElementById('back-to-top');
-    
-    // Show/hide back to top button based on scroll position
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-    });
-    
-    // Smooth scroll to top when button is clicked
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
-    // Toast for all coming soon streaming buttons
-    document.body.addEventListener('click', function(e) {
-        const target = e.target.closest('.coming-soon-btn');
-        if (target) {
-            e.preventDefault();
-            showToast('Rathu Saaya is coming soon!');
-        }
-    });
-    // Ensure swipe-in classes and reveal after all dynamic rendering
+    // Wait for loading to complete before initializing other features
     setTimeout(() => {
-        // applySwipeInClasses(); // Removed
-        // revealOnScrollSwipeIn(); // Removed
-    }, 100);
-}); 
+        renderSongs();
+        ensureBottomPlayer();
+        
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Smooth scroll to top when button is clicked
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Toast for all coming soon streaming buttons
+        document.body.addEventListener('click', function(e) {
+            const target = e.target.closest('.coming-soon-btn');
+            if (target) {
+                e.preventDefault();
+                showToast('Rathu Saaya is coming soon!');
+            }
+        });
+    }, 3500); // Wait for loading screen to complete
+});
 
 // --- Custom Player Logic ---
 function initCustomPlayers() {
