@@ -22,7 +22,7 @@ const SONGS = [
         artwork: 'images/songs/kathirina.jpg', // Placeholder, update as needed
         audio: 'audio/kathirina.mp3', // Placeholder, update as needed
         description: 'A soulful ballad about love and longing under the stars.',
-        album: 'Malindu, Iraj, Hirushi, Wasantha Dugganarala',
+        album: 'Malindu, Iraj, Hirushi',
         year: 2020,
     },
     {
@@ -30,9 +30,9 @@ const SONGS = [
         producer: ARTISTS.PRODUCERS.IRAJ,
         lyrics: ARTISTS.LYRICISTS.SAJITH_AKMEEMANA,
         artwork: 'images/songs/saavi.jpg', // Placeholder, update as needed
-        audio: 'audio/kathirina.mp3', // Placeholder, update as needed
+        audio: 'audio/saavi.mp3', // Placeholder, update as needed
         description: 'An upbeat anthem celebrating the power of connection.',
-        album: 'Malindu, Iraj, Romaine, Sajith Akmeemana',
+        album: 'Malindu, Iraj, Romaine',
         year: 2017,
     },
     {
@@ -40,9 +40,9 @@ const SONGS = [
         producer: ARTISTS.PRODUCERS.PASAN_LIYANAGE,
         lyrics: ARTISTS.LYRICISTS.YASHODHA_ADHIKARI,
         artwork: 'images/songs/muthuwarusa.jpg', // Placeholder, update as needed
-        audio: 'audio/kathirina.mp3', // Placeholder, update as needed
+        audio: 'audio/muthuwarusa.mp3', // Placeholder, update as needed
         description: 'An upbeat anthem celebrating the power of connection.',
-        album: 'Malindu, Pasan Liyanage,Yashodha Adhikari',
+        album: 'Malindu, Pasan Liyanage',
         year: 2024,
     },
     {
@@ -50,9 +50,9 @@ const SONGS = [
         producer: ARTISTS.PRODUCERS.ADEESHA_BEATS,
         lyrics: ARTISTS.LYRICISTS.SANKHA_B,
         artwork: 'images/songs/rathusaaya.jpg', // Placeholder, update as needed
-        audio: 'audio/kathirina.mp3', // Placeholder, update as needed
+        audio: 'audio/.mp3', // Placeholder, update as needed
         description: 'An upbeat anthem celebrating the power of connection.',
-        album: 'Malindu, Sankha B, Adesha Beats',
+        album: 'Malindu',
         year: 2025,
     }
 ];
