@@ -383,7 +383,10 @@ section {
 
 /* About Section */
 .about {
-    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    background: linear-gradient(135deg, #181828 60%, #23234b 100%);
+    border-top: 2px solid #8b5cf6;
+    border-bottom: 2px solid #00d4ff;
+    box-shadow: 0 8px 32px #8b5cf611;
 }
 
 .about-content {
@@ -433,7 +436,10 @@ section {
 
 /* Songs Section */
 .songs {
-    background: #0a0a0a;
+    background: linear-gradient(120deg, #23234b 60%, #191933 100%);
+    border-top: 2px solid #00d4ff;
+    border-bottom: 2px solid #ffbfae;
+    box-shadow: 0 8px 32px #00d4ff11;
 }
 
 .songs-grid {
@@ -753,7 +759,10 @@ section {
 
 /* YouTube Section */
 .youtube {
-    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    background: linear-gradient(135deg, #181828 60%, #b8a1ff22 100%);
+    border-top: 2px solid #ffbfae;
+    border-bottom: 2px solid #8b5cf6;
+    box-shadow: 0 8px 32px #b8a1ff22;
 }
 
 .youtube-content {
@@ -788,7 +797,10 @@ section {
 
 /* Releases Section */
 .releases {
-    background: #0a0a0a;
+    background: linear-gradient(120deg, #191933 60%, #ffbfae22 100%);
+    border-top: 2px solid #8b5cf6;
+    border-bottom: 2px solid #ffbfae;
+    box-shadow: 0 8px 32px #ffbfae22;
 }
 
 .release-content {
@@ -913,7 +925,10 @@ section {
 
 /* Collaborations Section */
 .collabs {
-    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    background: linear-gradient(135deg, #181828 60%, #ffe6b7 100%);
+    border-top: 2px solid #ffbfae;
+    border-bottom: 2px solid #00d4ff;
+    box-shadow: 0 8px 32px #ffe6b722;
 }
 
 .collabs-grid {
@@ -955,7 +970,10 @@ section {
 
 /* Videos Section */
 .videos {
-    background: #0a0a0a;
+    background: linear-gradient(120deg, #23234b 60%, #b8a1ff22 100%);
+    border-top: 2px solid #8b5cf6;
+    border-bottom: 2px solid #ffbfae;
+    box-shadow: 0 8px 32px #b8a1ff22;
 }
 
 .videos-grid {
@@ -1017,7 +1035,10 @@ section {
 
 /* Contact Section */
 .contact {
-    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    background: linear-gradient(135deg, #181828 60%, #ffbfae 100%);
+    border-top: 2px solid #ffbfae;
+    border-bottom: 2px solid #8b5cf6;
+    box-shadow: 0 8px 32px #ffbfae22;
 }
 
 .contact-content {
@@ -2728,4 +2749,99 @@ body, html {
     transition: none !important;
     transform: none !important;
   }
+}
+
+/* --- Pastel Accent Color --- */
+:root {
+    --pastel-accent: #ffbfae;
+}
+
+/* --- Elegant Section Backgrounds & Separation --- */
+.about {
+    background: linear-gradient(135deg, #181828 60%, #23234b 100%);
+    border-top: 2px solid #8b5cf6;
+    border-bottom: 2px solid #00d4ff;
+    box-shadow: 0 8px 32px #8b5cf611;
+}
+.songs {
+    background: linear-gradient(120deg, #23234b 60%, #191933 100%);
+    border-top: 2px solid #00d4ff;
+    border-bottom: 2px solid #ffbfae;
+    box-shadow: 0 8px 32px #00d4ff11;
+}
+.youtube {
+    background: linear-gradient(135deg, #181828 60%, #b8a1ff22 100%);
+    border-top: 2px solid #ffbfae;
+    border-bottom: 2px solid #8b5cf6;
+    box-shadow: 0 8px 32px #b8a1ff22;
+}
+.releases {
+    background: linear-gradient(120deg, #191933 60%, #ffbfae22 100%);
+    border-top: 2px solid #8b5cf6;
+    border-bottom: 2px solid #ffbfae;
+    box-shadow: 0 8px 32px #ffbfae22;
+}
+.collabs {
+    background: linear-gradient(135deg, #181828 60%, #ffe6b7 100%);
+    border-top: 2px solid #ffbfae;
+    border-bottom: 2px solid #00d4ff;
+    box-shadow: 0 8px 32px #ffe6b722;
+}
+.videos {
+    background: linear-gradient(120deg, #23234b 60%, #b8a1ff22 100%);
+    border-top: 2px solid #8b5cf6;
+    border-bottom: 2px solid #ffbfae;
+    box-shadow: 0 8px 32px #b8a1ff22;
+}
+.contact {
+    background: linear-gradient(135deg, #181828 60%, #ffbfae 100%);
+    border-top: 2px solid #ffbfae;
+    border-bottom: 2px solid #8b5cf6;
+    box-shadow: 0 8px 32px #ffbfae22;
+}
+
+/* --- Section Card/Container --- */
+.container {
+    background: rgba(255,255,255,0.03);
+    border-radius: 24px;
+    box-shadow: 0 4px 32px #0002;
+    padding: 2.5rem 2rem;
+    margin-bottom: 2.5rem;
+}
+@media (max-width: 700px) {
+  .container {
+    padding: 1.2rem 0.5rem;
+    border-radius: 14px;
+  }
+}
+
+/* --- Section Title Underline --- */
+.section-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2.5rem;
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 5px;
+    margin: 0.7rem auto 0 auto;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #00d4ff, #ffbfae, #8b5cf6);
+    opacity: 0.7;
+}
+
+/* --- Add more vertical spacing between sections --- */
+section {
+    margin-bottom: 3.5rem;
+}
+
+/* --- Remove container background for hero and footer --- */
+.hero .container, .footer .container {
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 0;
 }
