@@ -50,7 +50,7 @@
         </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero fade-in-up">
         <div class="hero-background">
             <video autoplay muted loop class="hero-video">
                 <!-- <source src="images/hero/hero-video.mp4" type="video/mp4"> -->
@@ -59,30 +59,30 @@
             </video>
             <div class="hero-overlay"></div>
         </div>
-        <div class="hero-content">
-            <h1 class="hero-title">Malindu Kirindegama</h1>
-            <div class="hero-subtitle-container">
+        <div class="hero-content swipe-in-right">
+            <h1 class="hero-title fade-in-up">Malindu Kirindegama</h1>
+            <div class="hero-subtitle-container fade-in-up">
                 <span class="hero-subtitle-text">Singer</span>
             </div>
-            <div class="hero-buttons">
+            <div class="hero-buttons fade-in-up">
                 <a href="#songs" class="btn btn-primary">Listen Now</a>
                 <a href="#releases" class="btn btn-secondary">Latest Release</a>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <div class="scroll-indicator fade-in-up" id="scroll-indicator" tabindex="0" role="button" aria-label="Scroll to About Me">
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about swipe-in-left">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title fade-in-up">About Me</h2>
             <div class="about-content">
-                <div class="about-image">
+                <div class="about-image fade-in-up">
                     <img src="images/artist/profile_about_me.jpg" alt="Malindu" class="artist-photo" loading="lazy">
                 </div>
-                <div class="about-text">
+                <div class="about-text fade-in-up">
                     <p>Hi, I'm Malindu Kirindegamaarachchi.</p>
                     <p>I'm a singer who focuses on creating quality music with some of Sri Lanka's most respected producers and lyricists. My journey started with "Saavi" (2017), produced by Iraj, and my breakthrough came with "Kathirina" (2020) which has reached over 14 million views - the most famous song that I gave my voice to.</p>
                     <p>I prefer to let my music speak for itself. I work quietly, choose my collaborations carefully, and always prioritize quality over quantity. When I'm not making music, you'll find me coding.</p>
@@ -93,20 +93,20 @@
     </section>
 
     <!-- Songs Section -->
-    <section id="songs" class="songs">
+    <section id="songs" class="songs swipe-in-right">
         <div class="container">
-            <h2 class="section-title">My Songs</h2>
+            <h2 class="section-title fade-in-up">My Songs</h2>
             <!-- Apple Music inspired list rendered dynamically from JS -->
-            <div id="songs-list" class="songs-list"></div>
+            <div id="songs-list" class="songs-list fade-in-up"></div>
         </div>
     </section>
 
     <!-- YouTube Section -->
-    <section id="youtube" class="youtube">
+    <section id="youtube" class="youtube swipe-in-left">
         <div class="container">
-            <h2 class="section-title">YouTube Channel</h2>
-            <div class="youtube-content" style="justify-content: center;">
-                <div class="youtube-info" style="margin: 0 auto; text-align: center;">
+            <h2 class="section-title fade-in-up">YouTube Channel</h2>
+            <div class="youtube-content fade-in-up" style="justify-content: center;">
+                <div class="youtube-info fade-in-up" style="margin: 0 auto; text-align: center;">
                     <h3>Latest from Malindu</h3>
                     <p>Subscribe to my YouTube channel for exclusive behind-the-scenes content, live performances, and music videos.</p>
                     <button class="song-popup-subscribe-btn" onclick="window.open('https://www.youtube.com/@Malindu?sub_confirmation=1', '_blank')">
@@ -119,18 +119,18 @@
     </section>
 
     <!-- New Release Section -->
-    <section id="releases" class="releases">
+    <section id="releases" class="releases swipe-in-right">
         <div class="container">
-            <h2 class="section-title">New Release</h2>
-            <div class="release-content">
-                <div class="release-artwork">
+            <h2 class="section-title fade-in-up">New Release</h2>
+            <div class="release-content fade-in-up">
+                <div class="release-artwork fade-in-up">
                     <img src="images/songs/rathusaaya.jpg" alt="Rathusaaya - New Release">
                     <div class="release-badge">NEW</div>
                 </div>
-                <div class="release-info">
+                <div class="release-info fade-in-up">
                     <h3>"Rathu Saaya" - Coming Soon</h3>
                     <p>My latest single "Rathu Saaya" is coming soon to all streaming platforms. Stay tuned for an unforgettable musical experience!</p>
-                    <div class="streaming-links" style="justify-content: flex-start;">
+                    <div class="streaming-links fade-in-up" style="justify-content: flex-start;">
                         <a href="#" class="streaming-btn spotify coming-soon-btn">
                             <i class="fab fa-spotify"></i>
                             Spotify
@@ -150,11 +150,11 @@
     </section>
 
     <!-- Collaborations Section -->
-    <section id="collabs" class="collabs">
+    <section id="collabs" class="collabs swipe-in-left">
         <div class="container">
-            <h2 class="section-title">Collaborations</h2>
-            <div class="collabs-chips-group" style="justify-content: center;">
-                <div class="chips-row" style="justify-content: center;">
+            <h2 class="section-title fade-in-up">Collaborations</h2>
+            <div class="collabs-chips-group fade-in-up" style="justify-content: center;">
+                <div class="chips-row fade-in-up" style="justify-content: center;">
                     <span class="collab-chip">Iraj</span>
                     <span class="collab-chip">Pasan Liyanage</span>
                     <span class="collab-chip">Sankha B</span>
@@ -170,22 +170,22 @@
     </section>
 
     <!-- Music Videos Section -->
-    <section id="videos" class="videos">
+    <section id="videos" class="videos swipe-in-right">
         <div class="container">
-            <h2 class="section-title">Music Videos</h2>
-            <div id="videos-list" class="videos-grid"></div>
+            <h2 class="section-title fade-in-up">Music Videos</h2>
+            <div id="videos-list" class="videos-grid fade-in-up"></div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact swipe-in-left">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content" style="justify-content: center;">
-                <div class="contact-info" style="margin: 0 auto; text-align: center;">
+            <h2 class="section-title fade-in-up">Get In Touch</h2>
+            <div class="contact-content fade-in-up" style="justify-content: center;">
+                <div class="contact-info fade-in-up" style="margin: 0 auto; text-align: center;">
                     <h3>Connect with me on social media</h3>
                     <p>Follow for updates, music, and more:</p>
-                    <div class="social-links">
+                    <div class="social-links fade-in-up">
                         <a href="https://www.instagram.com/malindu_kirindegama" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/malinduofficial" class="social-link"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.tiktok.com/@malindu_kirindegama" class="social-link"><i class="fab fa-tiktok"></i></a>

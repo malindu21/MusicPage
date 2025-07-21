@@ -1809,12 +1809,12 @@ body, html {
 .swipe-in-left {
   opacity: 0;
   transform: translateX(-60px);
-  transition: opacity 0.7s cubic-bezier(0.77,0,0.18,1), transform 0.7s cubic-bezier(0.77,0,0.18,1);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
 }
 .swipe-in-right {
   opacity: 0;
   transform: translateX(60px);
-  transition: opacity 0.7s cubic-bezier(0.77,0,0.18,1), transform 0.7s cubic-bezier(0.77,0,0.18,1);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
 }
 .swipe-in-view {
   opacity: 1 !important;
@@ -2698,3 +2698,34 @@ body, html {
 
 /* Remove progress bar styles if not used */
 .progress-bar, .progress-fill, .progress-text, .progress-container { display: none !important; }
+
+/* Scroll-triggered entrance animations */
+.swipe-in-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.swipe-in-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+
+.swipe-in-left.in-view,
+.swipe-in-right.in-view,
+.fade-in-up.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swipe-in-left, .swipe-in-right, .fade-in-up {
+    transition: none !important;
+    transform: none !important;
+  }
+}

@@ -892,3 +892,42 @@ function renderVideos() {
 document.addEventListener('DOMContentLoaded', function() {
   renderVideos();
 }); 
+
+// === Scroll-triggered entrance animations ===
+(function() {
+  const animatedEls = document.querySelectorAll('.swipe-in-left, .swipe-in-right, .fade-in-up');
+  if ('IntersectionObserver' in window && animatedEls.length) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    animatedEls.forEach(el => observer.observe(el));
+  } else {
+    // Fallback: show all
+    animatedEls.forEach(el => el.classList.add('in-view'));
+  }
+})(); 
+
+// === Scroll-indicator click to scroll to About ===
+document.addEventListener('DOMContentLoaded', function() {
+  var scrollIndicator = document.getElementById('scroll-indicator');
+  if (scrollIndicator) {
+    var scrollToAbout = function(e) {
+      e.preventDefault();
+      var aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+    scrollIndicator.addEventListener('click', scrollToAbout);
+    scrollIndicator.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        scrollToAbout(e);
+      }
+    });
+  }
+}); 
