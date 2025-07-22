@@ -44,12 +44,26 @@ body {
     height: 70px;
 }
 
-.nav-logo a {
-    color: #00d4ff;
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    height: 54px;
+    max-height: 64px;
+    width: auto;
+    display: block;
+    filter: invert(1) brightness(2) grayscale(1);
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .site-logo {
+      height: 54px;
+      max-height: 64px;
+    }
 }
 
 .nav-menu {
@@ -159,6 +173,10 @@ body {
 @media (max-width: 768px) {
     .hero-overlay::before {
         background-position: left center;
+    }
+    .site-logo {
+      height: 54px;
+      max-height: 64px;
     }
 }
 
@@ -2914,5 +2932,24 @@ section {
 @media (min-width: 769px) {
   .hamburger {
     display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    min-height: 64px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    height: auto !important;
+  }
+  .nav-container {
+    min-height: 64px;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .site-logo {
+    height: 54px;
+    max-height: 64px;
   }
 }
