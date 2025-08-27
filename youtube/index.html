@@ -4,8 +4,23 @@
   <title>Redirecting to YouTube…</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
-    // Try to open in YouTube app first
-    window.location.replace("https://www.youtube.com/@malindu");
+    // Function to attempt opening YouTube app
+    function redirectToYouTube() {
+      // YouTube app deep link for channel
+      const appUrl = "vnd.youtube://www.youtube.com/@malindu";
+      const webUrl = "https://www.youtube.com/@malindu";
+
+      // Attempt to open the YouTube app
+      window.location.href = appUrl;
+
+      // Fallback to web URL if app doesn't open after a short delay
+      setTimeout(() => {
+        window.location.href = webUrl;
+      }, 1000); // 1-second delay to allow app to open
+    }
+
+    // Run redirect function on page load
+    window.onload = redirectToYouTube;
   </script>
 </head>
 <body>
