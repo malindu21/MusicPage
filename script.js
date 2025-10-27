@@ -50,9 +50,9 @@ const SONGS = [
         producer: ARTISTS.PRODUCERS.ADEESHA_BEATS,
         lyrics: ARTISTS.LYRICISTS.SANKHA_B,
         artwork: 'images/songs/rathusaaya.jpg', // Placeholder, update as needed
-        audio: 'audio/.mp3', // Placeholder, update as needed
+        audio: 'audio/rathusaaya.mp3', // Placeholder, update as needed
         description: 'An upbeat anthem celebrating the power of connection.',
-        album: 'Malindu',
+        album: 'Malindu, Sankha B, Adeesha Beats',
         year: 2025,
     }
 ];
@@ -69,7 +69,11 @@ const VIDEOS = [
       youtubeUrl: 'https://www.youtube.com/embed/IIG8x725JxE',
       thumbnail: 'images/songs/saavi.jpg',
     },
-    // Add more videos as needed
+    {
+        title: 'Rathu Saaya',
+        youtubeUrl: 'https://www.youtube.com/embed/jCob6x0eDd0',
+        thumbnail: 'images/songs/rathusaaya.jpg',
+    },
   ];
 
 // Mobile Navigation Toggle
