@@ -656,53 +656,137 @@ function setupBottomPlayerLogic(player) {
 }
 
 // Loading Screen Functionality
+function waitForCriticalImages(timeout = 7000) {
+    const images = Array.from(document.querySelectorAll('img')).filter(img => {
+        const attr = img.getAttribute('loading');
+        const prop = typeof img.loading === 'string' ? img.loading.toLowerCase() : '';
+        return attr !== 'lazy' && prop !== 'lazy';
+    });
+
+    if (!images.length) {
+        return Promise.resolve(true);
+    }
+
+    return new Promise(resolve => {
+        let remaining = images.length;
+        let resolved = false;
+        let allSucceeded = true;
+        const cleanup = [];
+
+        const finish = (allLoaded) => {
+            if (resolved) return;
+            resolved = true;
+            cleanup.forEach(fn => fn());
+            resolve(allLoaded);
+        };
+
+        const timer = setTimeout(() => finish(false), timeout);
+        cleanup.push(() => clearTimeout(timer));
+
+        const markDone = (succeeded) => {
+            if (!succeeded) {
+                allSucceeded = false;
+            }
+            remaining -= 1;
+            if (remaining <= 0) {
+                finish(allSucceeded);
+            }
+        };
+
+        images.forEach(img => {
+            if (img.complete) {
+                markDone(img.naturalWidth !== 0);
+                return;
+            }
+
+            const onDone = (event) => {
+                img.removeEventListener('load', onDone);
+                img.removeEventListener('error', onDone);
+                markDone(event.type !== 'error');
+            };
+
+            img.addEventListener('load', onDone);
+            img.addEventListener('error', onDone);
+            cleanup.push(() => {
+                img.removeEventListener('load', onDone);
+                img.removeEventListener('error', onDone);
+            });
+        });
+
+        if (remaining <= 0) {
+            finish(allSucceeded);
+        }
+    });
+}
+
 function initLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     const mainContent = document.getElementById('main-content');
-    
+
     if (!loadingScreen || !mainContent) {
         document.body.classList.add('loaded');
+        return;
+    }
+
+    const storageKey = 'initialImagesLoaded';
+    let hasPreloaded = false;
+    try {
+        hasPreloaded = localStorage.getItem(storageKey) === 'true';
+    } catch (err) {
+        hasPreloaded = false;
+    }
+    const minDisplayTime = 300;
+    const maxWaitTime = 7000;
+    let revealed = false;
+
+    const revealContent = (skipAnimation = false) => {
+        if (revealed) return;
+        revealed = true;
+
+        document.body.classList.add('loaded');
+        mainContent.style.display = 'block';
+
+        if (skipAnimation) {
+            loadingScreen.style.display = 'none';
+            loadingScreen.classList.remove('fade-out');
+            return;
+        }
+
+        if (!loadingScreen.classList.contains('fade-out')) {
+            loadingScreen.classList.add('fade-out');
+        }
+
+        const hideLoader = () => {
+            loadingScreen.style.display = 'none';
+            loadingScreen.removeEventListener('transitionend', hideLoader);
+        };
+
+        loadingScreen.addEventListener('transitionend', hideLoader);
+        setTimeout(hideLoader, 600);
+    };
+
+    if (hasPreloaded) {
+        revealContent(true);
         return;
     }
 
     loadingScreen.style.display = 'flex';
     mainContent.style.display = 'none';
 
-    const minDisplayTime = 300;
-    const startTime = performance.now();
+    const ensureMinDisplay = new Promise(resolve => setTimeout(resolve, minDisplayTime));
 
-    const revealContent = () => {
-        if (loadingScreen.classList.contains('fade-out')) return;
-
-        document.body.classList.add('loaded');
-        loadingScreen.classList.add('fade-out');
-        mainContent.style.display = 'block';
-
-        const hideLoader = () => {
-            if (loadingScreen.style.display === 'none') return;
-            loadingScreen.style.display = 'none';
-            loadingScreen.removeEventListener('transitionend', hideLoader);
-        };
-
-        loadingScreen.addEventListener('transitionend', hideLoader);
-        // Fallback in case transitionend does not fire
-        setTimeout(hideLoader, 600);
-    };
-
-    const scheduleReveal = () => {
-        const elapsed = performance.now() - startTime;
-        if (elapsed >= minDisplayTime) {
-            revealContent();
-        } else {
-            setTimeout(revealContent, minDisplayTime - elapsed);
+    Promise.all([ensureMinDisplay, waitForCriticalImages(maxWaitTime)]).then(([, allLoaded]) => {
+        if (allLoaded) {
+            try {
+                localStorage.setItem(storageKey, 'true');
+            } catch (err) {
+                // Storage might be unavailable; ignore
+            }
         }
-    };
-
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        requestAnimationFrame(scheduleReveal);
-    } else {
-        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(scheduleReveal), { once: true });
-    }
+        revealContent();
+    }).catch(() => {
+        revealContent();
+    });
 }
 
 window.addEventListener('DOMContentLoaded', () => {
