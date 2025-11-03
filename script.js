@@ -724,6 +724,7 @@ function initLoadingScreen() {
     const mainContent = document.getElementById('main-content');
 
     if (!loadingScreen || !mainContent) {
+        document.body.classList.remove('is-loading');
         document.body.classList.add('loaded');
         return;
     }
@@ -743,6 +744,7 @@ function initLoadingScreen() {
         if (revealed) return;
         revealed = true;
 
+        document.body.classList.remove('is-loading');
         document.body.classList.add('loaded');
         mainContent.style.display = 'block';
 

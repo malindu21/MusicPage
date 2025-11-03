@@ -47,6 +47,14 @@ body {
     overflow-x: hidden;
 }
 
+body.is-loading #main-content {
+    display: none;
+}
+
+body.loaded #main-content {
+    display: block;
+}
+
 .body-text, p, li, span, a, label {
     font-family: inherit;
     font-size: inherit;
