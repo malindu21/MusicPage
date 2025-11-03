@@ -1234,6 +1234,15 @@ section {
         font-size: 1.2rem;
     }
 
+    .hero {
+      align-items: flex-end;
+      padding-bottom: 10vh !important; /* was 14vh, reduced for lift */
+    }
+  
+    .hero-content {
+      margin-bottom: 6vh !important; /* lifts content upward */
+    }
+
     .hero-buttons {
         flex-direction: column;
         align-items: center;
