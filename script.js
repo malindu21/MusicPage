@@ -390,24 +390,6 @@ const debouncedScrollHandler = debounce(() => {
 window.addEventListener('scroll', debouncedScrollHandler);
 
 // Add loading animation
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
-
-// Add CSS for loading animation
-const loadingStyle = document.createElement('style');
-loadingStyle.textContent = `
-    body {
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
-    
-    body.loaded {
-        opacity: 1;
-    }
-`;
-document.head.appendChild(loadingStyle); 
-
 // --- Enhanced Animations ---
 
 // Helper: Animate cards with stagger only when in viewport
@@ -678,14 +660,21 @@ function initLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     const mainContent = document.getElementById('main-content');
     
-    if (!loadingScreen || !mainContent) return;
+    if (!loadingScreen || !mainContent) {
+        document.body.classList.add('loaded');
+        return;
+    }
 
     loadingScreen.style.display = 'flex';
     mainContent.style.display = 'none';
 
+    const minDisplayTime = 300;
+    const startTime = performance.now();
+
     const revealContent = () => {
         if (loadingScreen.classList.contains('fade-out')) return;
 
+        document.body.classList.add('loaded');
         loadingScreen.classList.add('fade-out');
         mainContent.style.display = 'block';
 
@@ -697,48 +686,72 @@ function initLoadingScreen() {
 
         loadingScreen.addEventListener('transitionend', hideLoader);
         // Fallback in case transitionend does not fire
-        setTimeout(hideLoader, 900);
+        setTimeout(hideLoader, 600);
     };
 
-    if (document.readyState === 'complete') {
-        revealContent();
+    const scheduleReveal = () => {
+        const elapsed = performance.now() - startTime;
+        if (elapsed >= minDisplayTime) {
+            revealContent();
+        } else {
+            setTimeout(revealContent, minDisplayTime - elapsed);
+        }
+    };
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        requestAnimationFrame(scheduleReveal);
     } else {
-        window.addEventListener('load', revealContent, { once: true });
+        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(scheduleReveal), { once: true });
     }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
     // Initialize loading screen
     initLoadingScreen();
-    renderSongs();
-    ensureBottomPlayer();
-    // Back to top button functionality
-    const backToTopBtn = document.getElementById('back-to-top');
-    if (backToTopBtn) {
-        // Show/hide back to top button based on scroll position
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
+    const hydrateInteractiveBits = () => {
+        renderSongs();
+        ensureBottomPlayer();
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('back-to-top');
+        if (backToTopBtn) {
+            // Show/hide back to top button based on scroll position
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            // Smooth scroll to top when button is clicked
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        // Toast for all coming soon streaming buttons
+        document.body.addEventListener('click', function(e) {
+            const target = e.target.closest('.coming-soon-btn');
+            if (target) {
+                e.preventDefault();
+                showToast('Rathu Saaya is coming soon!');
             }
         });
-        // Smooth scroll to top when button is clicked
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+    };
+
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(hydrateInteractiveBits, { timeout: 800 });
+    } else {
+        setTimeout(hydrateInteractiveBits, 0);
     }
-    // Toast for all coming soon streaming buttons
-    document.body.addEventListener('click', function(e) {
-        const target = e.target.closest('.coming-soon-btn');
-        if (target) {
-            e.preventDefault();
-            showToast('Rathu Saaya is coming soon!');
-        }
-    });
+});
+
+// Fallback: ensure body becomes visible if loader fails to resolve before full load
+window.addEventListener('load', () => {
+    if (!document.body.classList.contains('loaded')) {
+        document.body.classList.add('loaded');
+    }
 });
 
 // --- Custom Player Logic ---

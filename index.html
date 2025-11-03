@@ -6,6 +6,10 @@
     <meta name="description" content="Malindu - Singer, Musician. Official portfolio featuring music, videos, and collaborations.">
     <meta name="keywords" content="Malindu, singer, musician, music, artist, portfolio">
     <title>Malindu Kirindegama - Singer | Musician</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="image" href="images/artist/profile_about_me.webp" fetchpriority="high" imagesrcset="images/artist/profile_about_me.webp 1280w, images/artist/about_me.webp 768w" imagesizes="(max-width: 768px) 100vw, 100vw">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -25,7 +29,7 @@
     </div>
 
     <!-- Main Content -->
-    <div id="main-content" style="display: none;">
+    <div id="main-content">
         <!-- Navigation -->
         <nav class="navbar">
             <div class="nav-container">
@@ -54,8 +58,8 @@
     <section id="home" class="hero fade-in-up">
         <div class="hero-background">
             <picture>
-                <source media="(max-width: 768px)" srcset="images/artist/about_me.webp">
-                <img src="images/artist/profile_about_me.webp" alt="Malindu performing" class="hero-video">
+                <source media="(max-width: 768px)" srcset="images/artist/about_me.webp" type="image/webp">
+                <img src="images/artist/profile_about_me.webp" alt="Malindu performing" class="hero-video" fetchpriority="high" decoding="async">
             </picture>
             <div class="hero-overlay"></div>
         </div>
@@ -80,7 +84,7 @@
             <h2 class="section-title fade-in-up">About Me</h2>
             <div class="about-content">
                 <div class="about-image fade-in-up">
-                    <img src="images/songs/kathirina.jpg" alt="Malindu" class="artist-photo" loading="lazy">
+                    <img src="images/songs/kathirina.jpg" alt="Malindu" class="artist-photo" loading="lazy" decoding="async">
                 </div>
                 <div class="about-text fade-in-up">
                     <p>Hi, I'm Malindu Kirindegamaarachchi.</p>
@@ -124,7 +128,7 @@
       <h2 class="section-title fade-in-up">New Release</h2>
       <div class="release-content fade-in-up">
         <div class="release-artwork fade-in-up">
-          <img src="images/songs/rathusaaya.jpg" alt="Rathu Saaya - New Release">
+          <img src="images/songs/rathusaaya.jpg" alt="Rathu Saaya - New Release" loading="lazy" decoding="async">
           <div class="release-badge">OUT NOW</div>
         </div>
         <div class="release-info fade-in-up">
