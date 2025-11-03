@@ -678,33 +678,43 @@ function initLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     const mainContent = document.getElementById('main-content');
     
-    // Always show loading screen first
+    if (!loadingScreen || !mainContent) return;
+
     loadingScreen.style.display = 'flex';
-    if (mainContent) {
-        mainContent.style.display = 'none';
-    }
-    
-    // Simulate loading for 2.5s, then fade out
-    setTimeout(() => {
+    mainContent.style.display = 'none';
+
+    const revealContent = () => {
+        if (loadingScreen.classList.contains('fade-out')) return;
+
         loadingScreen.classList.add('fade-out');
-        setTimeout(() => {
+        mainContent.style.display = 'block';
+
+        const hideLoader = () => {
+            if (loadingScreen.style.display === 'none') return;
             loadingScreen.style.display = 'none';
-            if (mainContent) {
-                mainContent.style.display = 'block';
-            }
-        }, 800);
-    }, 2500);
+            loadingScreen.removeEventListener('transitionend', hideLoader);
+        };
+
+        loadingScreen.addEventListener('transitionend', hideLoader);
+        // Fallback in case transitionend does not fire
+        setTimeout(hideLoader, 900);
+    };
+
+    if (document.readyState === 'complete') {
+        revealContent();
+    } else {
+        window.addEventListener('load', revealContent, { once: true });
+    }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
     // Initialize loading screen
     initLoadingScreen();
-    // Wait for loading to complete before initializing other features
-    setTimeout(() => {
-        renderSongs();
-        ensureBottomPlayer();
-        // Back to top button functionality
-        const backToTopBtn = document.getElementById('back-to-top');
+    renderSongs();
+    ensureBottomPlayer();
+    // Back to top button functionality
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
         // Show/hide back to top button based on scroll position
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
@@ -720,15 +730,15 @@ window.addEventListener('DOMContentLoaded', () => {
                 behavior: 'smooth'
             });
         });
-        // Toast for all coming soon streaming buttons
-        document.body.addEventListener('click', function(e) {
-            const target = e.target.closest('.coming-soon-btn');
-            if (target) {
-                e.preventDefault();
-                showToast('Rathu Saaya is coming soon!');
-            }
-        });
-    }, 3300); // Wait for loading screen to complete (2.5s + 0.8s fade)
+    }
+    // Toast for all coming soon streaming buttons
+    document.body.addEventListener('click', function(e) {
+        const target = e.target.closest('.coming-soon-btn');
+        if (target) {
+            e.preventDefault();
+            showToast('Rathu Saaya is coming soon!');
+        }
+    });
 });
 
 // --- Custom Player Logic ---
