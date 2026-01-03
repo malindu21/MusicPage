@@ -66,6 +66,16 @@ const SONGS = [
         description: 'An upbeat anthem celebrating the power of connection.',
         album: 'Dilshan Silva, Lasitha Jayaneththi',
         year: 2026,
+    },
+    {
+        name: 'Untitled (Coming Soon)',
+        producer: ARTISTS.PRODUCERS.IRAJ,
+        lyrics: ARTISTS.LYRICISTS.IRAJ,
+        artwork: 'images/songs/untitled.jpg', // Placeholder, update as needed
+        audio: 'audio/.mp3', // Placeholder, update as needed
+        description: 'An upbeat anthem celebrating the power of connection.',
+        album: 'Iraj',
+        year: 2026,
     }
 ];
 
