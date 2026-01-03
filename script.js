@@ -4,12 +4,14 @@ const ARTISTS = {
         IRAJ: 'Iraj',
         PASAN_LIYANAGE: 'Pasan Liyanage',
         ADEESHA_BEATS: 'Adeesha Beats',
+        Dilshan_L_Silva: 'Dilshan L Silva',
     },
     LYRICISTS: {
         WASANTHA_DUGGANARALA: 'Wasantha Dugganarala',
         SAJITH_AKMEEMANA: 'Sajith Akmeemana',
         YASHODHA_ADHIKARI: 'Yashodha Adhikari',
         SANKHA_B: 'Sankha B',
+        LASITHA_JAYANETHTHI: 'Lasitha Jayaneththi Arachchige',
     }
 };
 
@@ -54,6 +56,16 @@ const SONGS = [
         description: 'An upbeat anthem celebrating the power of connection.',
         album: 'Malindu, Sankha B, Adeesha Beats',
         year: 2025,
+    },
+    {
+        name: 'Untitled (Coming Soon)',
+        producer: ARTISTS.PRODUCERS.Dilshan_L_Silva,
+        lyrics: ARTISTS.LYRICISTS.LASITHA_JAYANETHTHI,
+        artwork: 'images/songs/untitled.jpg', // Placeholder, update as needed
+        audio: 'audio/.mp3', // Placeholder, update as needed
+        description: 'An upbeat anthem celebrating the power of connection.',
+        album: 'Dilshan L Silva, Lasitha Jayaneththi',
+        year: 2026,
     }
 ];
 
