@@ -3172,3 +3172,140 @@ section {
     max-height: 64px;
   }
 }
+
+/* =========================
+   Events Section
+========================= */
+.events {
+    background: linear-gradient(135deg, #181828 60%, #23234b 100%);
+    border-top: 2px solid #00d4ff;
+    border-bottom: 2px solid #ffbfae;
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.12);
+}
+
+.event-header {
+    margin-bottom: 2.5rem;
+}
+
+.event-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 1.2rem + 0.8vw, 2rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+}
+
+.event-subtitle {
+    font-size: clamp(0.9rem, 0.86rem + 0.25vw, 1.05rem);
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+}
+
+/* Events Gallery */
+.events-gallery {
+    width: 100%;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #181828;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    display: block;
+    object-position: center 25%;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 40%,
+        rgba(0, 0, 0, 0.45) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(12, 18, 42, 0.55);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================
+   Events Gallery – Mobile Swipe Only
+========================= */
+@media (max-width: 600px) {
+
+    .events-gallery {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 0.5rem;
+    }
+
+    .gallery-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 1rem;
+        width: max-content;
+    }
+
+    .gallery-item {
+        flex: 0 0 78vw;
+        max-width: 78vw;
+        height: auto;
+        scroll-snap-align: center;
+        border-radius: 14px;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        max-height: 240px;
+        object-fit: cover;
+        object-position: center 25%;
+        aspect-ratio: 4 / 3;
+    }
+
+    /* Hide scrollbar */
+    .events-gallery::-webkit-scrollbar {
+        display: none;
+    }
+
+    .events-gallery {
+        scrollbar-width: none;
+    }
+}
