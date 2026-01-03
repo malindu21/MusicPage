@@ -64,7 +64,7 @@ const SONGS = [
         artwork: 'images/songs/untitled.jpg', // Placeholder, update as needed
         audio: 'audio/.mp3', // Placeholder, update as needed
         description: 'An upbeat anthem celebrating the power of connection.',
-        album: 'Dilshan L Silva, Lasitha Jayaneththi',
+        album: 'Dilshan Silva, Lasitha Jayaneththi',
         year: 2026,
     }
 ];
